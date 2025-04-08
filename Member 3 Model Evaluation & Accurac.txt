@@ -1,0 +1,68 @@
+Member 3: Model Evaluation & Accuracy Calculation
+Role Overview
+Member 3 is responsible for evaluating the machine learning model’s performance by analyzing the accuracy and predictions. This involves:
+
+Testing the trained Logistic Regression model on unseen data.
+
+Calculating accuracy to measure the model’s performance.
+
+Identifying potential improvements by interpreting results.
+
+Background of the Tasks
+Why is Model Evaluation Important?
+
+It determines how well the model generalizes to new data.
+
+It helps in identifying overfitting (too specific to training data) or underfitting (too general, missing patterns).
+
+It allows comparison between different models and improvements over iterations.
+
+Key Performance Metrics Used
+
+Accuracy: Measures the percentage of correct predictions.
+
+Confusion Matrix (optional): Gives insights into false positives & false negatives.
+
+Steps Involved in Model Evaluation
+1. Making Predictions on Test Data
+Once the Logistic Regression model is trained, it is tested on unseen data.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+y_pred = model.predict(x_test)
+The model takes input features and outputs a prediction for each instance in the test set.
+
+2. Calculating Model Accuracy
+Accuracy is computed as the ratio of correct predictions to the total number of predictions.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+print('Accuracy of Logistic Regression is: ', model.score(x_test, y_test) * 100, '%')
+This provides a direct measure of how well the model is performing.
+
+3. Interpreting the Results
+The accuracy score indicates how many times the model made the right classification.
+
+A high accuracy (e.g., 90%+) means the model is performing well.
+
+A low accuracy (e.g., below 60%) suggests that improvements are needed (e.g., better feature selection, different models, or hyperparameter tuning).
+
+Challenges Faced
+Class Imbalance: If one class dominates, the model may predict it more often, skewing accuracy.
+
+Overfitting: The model might perform well on training data but fail on real-world data.
+
+Feature Selection Impact: Removing too many or too few features can affect performance.
+
+Conclusion
+Model accuracy was successfully calculated, indicating how well the model generalizes.
+
+Results guide potential improvements for future iterations.
+
+Further evaluation metrics (Precision, Recall, F1-score) can be explored if needed.

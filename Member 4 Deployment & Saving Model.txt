@@ -1,0 +1,80 @@
+Member 4: Deployment & Saving Model using Pickle
+Role Overview
+Member 4 is responsible for deploying the trained model and ensuring that it can be reused without retraining. This involves:
+
+Saving the trained model using Pickle for later use.
+
+Ensuring the model can be loaded and used for new predictions.
+
+Preparing the model for integration into a real-world application.
+
+Background of the Tasks
+Why Do We Save the Model?
+
+Training a model takes time and computational resources. Instead of retraining every time, we save it for reuse.
+
+Pickle allows the model to be stored as a file and later loaded without losing its learned parameters.
+
+It helps in deployment—where the model is used in a real-world setting (e.g., an API, website, or software).
+
+What is Pickle?
+
+Pickle is a Python library used to serialize (convert into a file format) and deserialize (load from a file) Python objects.
+
+It ensures that our trained model can be saved and retrieved efficiently.
+
+Steps Involved in Model Deployment
+1. Saving the Model
+Once the model is trained and evaluated, it needs to be saved for future use.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+import pickle
+pickle.dump(model, open("model.pkl", 'wb'))
+pickle.dump() writes the trained Logistic Regression model to a file named "model.pkl".
+
+The 'wb' mode means write binary, ensuring the model is stored efficiently.
+
+2. Loading the Model for Future Use
+To use the model without retraining, we load it from the saved file.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+model = pickle.load(open("model.pkl", 'rb'))
+pickle.load() reads the stored model from "model.pkl".
+
+The 'rb' mode means read binary, restoring the model with all its trained parameters.
+
+3. Using the Loaded Model for Predictions
+Once loaded, the model can predict on new data just like before.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+new_predictions = model.predict(new_data)
+model.predict() takes new input data and outputs predictions.
+
+This can be integrated into a web application, mobile app, or an API to detect network anomalies dynamically.
+
+Challenges Faced
+Model Compatibility: If the environment changes (e.g., different Python versions), the Pickle file may not load properly.
+
+Security Risks: Pickle files can be manipulated, so they should only be loaded from trusted sources.
+
+File Storage & Management: Ensuring the model is stored in a secure and accessible location for deployment.
+
+Conclusion
+The model was successfully saved and loaded using Pickle.
+
+It can now be deployed in a real-world system without retraining.
+
+This step ensures scalability and efficiency, making the project practical for use in network anomaly detection systems.
+

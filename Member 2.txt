@@ -1,0 +1,88 @@
+Role Overview
+Member 2 is responsible for training the machine learning model, specifically using Logistic Regression as the primary classification technique. Additionally, they implement Recursive Feature Elimination (RFE) to optimize feature selection, ensuring that only the most relevant features are used in the final model.
+
+Background of the Tasks
+Why Logistic Regression?
+
+Logistic Regression is widely used for binary classification problems, making it an excellent choice for network anomaly detection (normal vs. malicious activity).
+
+It provides probabilistic outputs, allowing us to assess confidence in predictions.
+
+It is computationally efficient and works well with standardized data.
+
+Feature Selection using RFE (Recursive Feature Elimination)
+
+Feature selection helps reduce noise in the dataset and improves model efficiency.
+
+RFE works by iteratively eliminating the least important features, improving model interpretability and performance.
+
+In this project, Random Forest Classifier is used as the estimator for RFE to determine the top 10 features.
+
+Steps Involved in Machine Learning Model Training
+1. Selecting Features with RFE
+Before training the model, we reduce the number of features using Recursive Feature Elimination (RFE).
+
+Implementation in Code:
+
+python
+Copy
+Edit
+rfc = RandomForestClassifier()
+rfe = RFE(rfc, n_features_to_select=10)
+rfe = rfe.fit(X_train, Y_train)
+feature_map = [(i, v) for i, v in itertools.zip_longest(rfe.get_support(), X_train.columns)]
+selected_features = [v for i, v in feature_map if i == True]
+The selected features are used to train the model.
+
+2. Standardizing the Data
+Feature scaling is applied to bring all feature values into a similar range.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+scale = StandardScaler()
+X_train = scale.fit_transform(X_train)
+test = scale.fit_transform(test)
+This step ensures that features contribute equally to the model and improves Logistic Regression’s convergence speed.
+
+3. Splitting Data for Training and Testing
+The dataset is split into training and testing sets using train_test_split() with 70% for training and 30% for testing.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+x_train, x_test, y_train, y_test = train_test_split(X_train, Y_train, train_size=0.70, random_state=2)
+4. Training the Logistic Regression Model
+A Logistic Regression model is trained on the preprocessed data.
+
+Implementation in Code:
+
+python
+Copy
+Edit
+model = LogisticRegression()
+model.fit(x_train, y_train)
+The trained model is now ready for evaluation.
+
+
+
+Challenges Faced
+Feature Selection Complexity: Choosing the optimal number of features for best performance.
+
+Balancing Performance & Interpretability: Ensuring high accuracy while keeping the model interpretable.
+
+Scaling & Normalization: Handling different data distributions to ensure smooth model training.
+
+
+
+Conclusion
+The Logistic Regression model was trained successfully, achieving a reasonable accuracy.
+
+Feature selection (RFE) optimized model performance.
+
+The preprocessed dataset ensured effective learning and reduced overfitting.
+

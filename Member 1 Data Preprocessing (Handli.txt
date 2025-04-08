@@ -1,0 +1,49 @@
+Member 1: Data Preprocessing (Handling Missing Values, Feature Selection)
+Background & Importance of Data Preprocessing
+Data preprocessing is a crucial step in machine learning. Raw data is often messy, containing missing values, redundant information, or irrelevant features that can negatively impact model performance. In network anomaly detection, ensuring clean and relevant data improves the accuracy of detecting unusual patterns.
+
+Tasks Performed by Member 1
+Loading the Dataset
+
+The dataset was loaded using pandas (pd.read_csv).
+
+Two datasets were used:
+
+Train_data.csv for training the model.
+
+Test_data.csv for evaluating model performance.
+
+train.head() and train.shape were used to inspect the dataset.
+
+Checking for Missing Values
+
+train.isnull().sum() was used to check for missing values.
+
+If missing values were present, different handling techniques (e.g., imputation) could be applied.
+
+Understanding Data Distribution
+
+train.describe() provided statistical summaries.
+
+train['class'].value_counts() was used to check class distribution (normal vs. attack traffic).
+
+Visualization of Class Distribution
+
+Seaborn (sns.countplot) was used to visualize how many instances belong to each class.
+
+Encoding Categorical Variables
+
+Label Encoding was applied using LabelEncoder() from sklearn.
+
+This was done to convert non-numeric categorical values (e.g., protocol type) into numerical format for model compatibility.
+
+Feature Selection
+
+The column num_outbound_cmds was removed using:
+
+python
+Copy
+Edit
+train.drop(['num_outbound_cmds'], axis=1, inplace=True)
+test.drop(['num_outbound_cmds'], axis=1, inplace=True)
+This feature had a constant value and was unnecessary.
