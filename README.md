@@ -1,38 +1,75 @@
-# Network Anomaly Detection Model - (VidyutKavach)
+# Network Anomaly Detection 🔍
 
-## Design of CYBER-SECURITY ENABLED SMART CONTROLLER for grid-connected Microgrid
+This project focuses on detecting anomalies in a network using Machine Learning techniques. It processes network data, selects key features, trains a model, and evaluates its accuracy to identify abnormal patterns in the network.
 
-The Network Anomaly Detection Model is part of the VidyutKavach platform, designed to ensure the security of microgrid networks. This model leverages machine learning to identify abnormal network behaviors that may indicate potential security threats or network intrusions. By monitoring real-time network traffic, the system can swiftly detect and respond to anomalies, helping to protect critical infrastructure from cyberattacks and unauthorized access.
+---
 
-## Features
-The model analyzes multiple parameters related to network traffic. The following features were selected for final prediction using a Random Forest Classifier (RFC):
+## 🚀 Project Overview
 
-protocol_type: Type of communication protocol (e.g., TCP, UDP).
+- **Domain:** Network Security
+- **Objective:** Detect anomalies in network traffic using Logistic Regression and Recursive Feature Elimination (RFE)
+- **Data:** Train and Test datasets in CSV format
 
-service: The network service being accessed (e.g., HTTP, FTP).
+---
 
-flag: The status of the network connection.
+## 📁 Project Structure
 
-src_bytes: Number of bytes transferred from the source.
 
-dst_bytes: Number of bytes transferred to the destination.
+---
 
-count: Number of connections to the same host within a specific time window.
+## ⚙️ Technologies Used
 
-same_srv_rate: Rate of connections to the same service.
+- Python
+- Jupyter Notebook
+- Scikit-learn
+- LightGBM
+- XGBoost
+- Pandas, NumPy, Seaborn, Matplotlib
+- Pickle (for saving model)
 
-diff_srv_rate: Rate of connections to different services.
+---
 
-dst_host_srv_count: Number of connections to the 
-destination host using the same service.
+## 🧠 ML Pipeline
 
-dst_host_same_srv_rate: Percentage of connections to the destination host using the same service.
+1. **Data Preprocessing**
+   - Label encoding of categorical features
+   - Feature elimination (`num_outbound_cmds`)
+   - Feature selection using `RFE`
 
-## Functionality
+2. **Model Training**
+   - Logistic Regression used as classifier
+   - Features scaled using `StandardScaler`
+   - Dataset split into training and testing
 
-**Real-time Monitoring**: The model continuously monitors live network traffic and processes the incoming data.
+3. **Model Evaluation**
+   - Accuracy printed for the classifier
 
-**Anomaly Detection**: The logistic regression model, trained on historical network data, predicts whether the current network activity is normal or anomalous based on the input features.
-**Flagging Suspicious Activity**: If the predicted result suggests an anomaly, the system triggers an alert. Depending on the anomaly’s severity, it may block the suspicious traffic or isolate the affected system.
+4. **Deployment**
+   - Trained model saved as `model.pkl` using Pickle
 
-### Tech-Stack -Used : Python, Pandas, Seaborn, MatplotLib, Sk-learn, RFC
+---
+
+## 📈 Model Performance
+
+- **Algorithm:** Logistic Regression
+- **Feature Selection:** Recursive Feature Elimination (RFE)
+- **Accuracy:** ~97% (based on evaluation on test data)
+
+---
+
+## 📦 How to Run
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/Network-Anomaly-Detection.git
+   cd Network-Anomaly-Detection
+Run the Jupyter notebook:
+
+    jupyter notebook network.ipynb
+
+To make predictions
+   
+    import pickle
+    model = pickle.load(open("model.pkl", "rb"))
+    prediction = model.predict(your_input_data)
+
